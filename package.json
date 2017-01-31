@@ -1,0 +1,22 @@
+{
+  "name": "Real-Time-Poll",
+  "version": "1.0.0",
+  "repository": "https://github.com/maiastone/real-time",
+  "license": "MIT",
+  "author": "Maia Stone",
+  "scripts": {
+    "start": "node routes/index.js",
+    "dev-server": "NODE_ENV=development cross-env hjs-dev-server"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "connect-ensure-login": "^0.1.1",
+    "express": "^4.14.1",
+    "jquery": "^3.1.1",
+    "passport": "^0.3.2",
+    "passport-auth0": "^0.6.0"
+  }
+}
