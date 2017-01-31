@@ -1,4 +1,4 @@
-var lock = new Auth0Lock('qHCAwXwsNocsS60Lq96fs7H6qTs3osQD', 'maiastone.auth0.com',
+const lock = new Auth0Lock('qHCAwXwsNocsS60Lq96fs7H6qTs3osQD', 'maiastone.auth0.com',
     { auth:
         {
         redirectUrl: 'http://localhost:3000/callback',
@@ -9,15 +9,15 @@ var lock = new Auth0Lock('qHCAwXwsNocsS60Lq96fs7H6qTs3osQD', 'maiastone.auth0.co
         }
 });
 
-$('#btn-login').click(function(e) {
+$('#btn-login').click((e) => {
   e.preventDefault();
   console.log('clicked!');
   lock.show();
 });
 
 
-lock.on('authenticated', function(authResult) {
-  lock.getProfile(authResult.idToken, function(error, profile) {
+lock.on('authenticated', (authResult) => {
+  lock.getProfile(authResult.idToken, (error, profile) => {
     if (error) {
       // Handle error
       return;
