@@ -1,7 +1,7 @@
 const lock = new Auth0Lock('qHCAwXwsNocsS60Lq96fs7H6qTs3osQD', 'maiastone.auth0.com',
     { auth:
         {
-        redirectUrl: 'http://localhost:3000/callback',
+        redirectUrl: 'http://localhost:3000/',
         responseType: 'code',
           params: {
             scope: 'openid name email picture'
