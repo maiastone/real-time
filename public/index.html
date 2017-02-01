@@ -13,15 +13,28 @@
   </head>
   <body>
 
-    <Header>
+    <header>
       <h1>Real Time Response</h1>
       <button type="submit" id="btn-login">Sign In</button>
       <button type="submit" id="btn-logout" style="display:none;">Sign Out</button>
     </header>
+
     <section class="user-display">
-      <h2><span class="name"></span></h2>
       <img alt="avatar" class="avatar" style="display:none;">
+      <h2><span class="name"></span></h2>
     </section>
+
+    <main class="form">
+      <form method="post" action="index.html">
+        <label class="form-name">Survey Name<input type="text" id="name"/></label>
+        <h3>Survey Responses</h3>
+        <label class="form-selection">A<input type="text" id="A"/></label>
+        <label class="form-selection">B<input type="text" id="B"/></label>
+        <label class="form-selection">C<input type="text" id="C"/></label>
+        <label class="form-selection">D<input type="text" id="D"/></label>
+        <button class="submit" type="submit">Build Survey</button>
+      </form>
+    </main>
 
     <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="./scripts.js"></script>

@@ -14,6 +14,13 @@ h2 {
   padding: 2%;
 }
 
+h3 {
+  width: 66%;
+  margin: auto;
+  font-size: 1.5em;
+  padding: 5px 0;
+}
+
 button {
   width: 60px;
   height: 30px;
@@ -29,8 +36,6 @@ button:hover {
 }
 
 .user-display {
-  width: 50%;
-  margin: auto;
   text-align: center;
   font-size: 28px;
   padding: 3%;
@@ -39,4 +44,18 @@ button:hover {
 img {
   height: 100px;
   width: 100px;
+}
+
+label {
+  display: block;
+  width: 66%;
+  margin: auto;
+  font-size: 1.5em;
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  margin: 2%;
+  font-size: 1.2em;
 }

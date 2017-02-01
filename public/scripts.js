@@ -45,8 +45,8 @@ window.addEventListener('load', function() {
 
   var showProfile = function(profile) {
     $('#btn-login').hide();
-    $('.name').text(`Hi, ${profile.name}`);
     $('.avatar').attr('src', profile.picture).show();
+    $('.name').text(`Hi, ${profile.name}. Create your survey below.`);
     $('#btn-logout').show();
   };
 
