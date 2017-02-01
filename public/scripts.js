@@ -16,6 +16,10 @@ window.addEventListener('load', function() {
     lock.show();
   });
 
+  $('#btn-logout').click((e) => {
+    e.preventDefault();
+    logout();
+  });
 
   lock.on('authenticated', (authResult) => {
     lock.getProfile(authResult.idToken, (error, profile) => {
@@ -40,12 +44,17 @@ window.addEventListener('load', function() {
   };
 
   var showProfile = function(profile) {
-    console.log(profile);
-    $('.btn-login').hide();
-    $('.name').text(profile.name);
+    $('#btn-login').hide();
+    $('.name').text(`Hi, ${profile.name}`);
     $('.avatar').attr('src', profile.picture).show();
+    $('#btn-logout').show();
   };
 
   retrieveUser();
+
+  var logout = function() {
+    localStorage.removeItem('id_token');
+    window.location.href = '/';
+  }
 
 });
