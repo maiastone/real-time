@@ -11,27 +11,27 @@ app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
 
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
+  res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/polls', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'public', 'polls.html'));
-});
-
-app.get('/login', (req, res) => {
-    res.render('login', { env: env });
-});
-
-app.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
-});
-
-app.get('/callback',
-  passport.authenticate('auth0', { failureRedirect: '/404.html' }),
-  (req, res) => {
-    res.redirect(req.session.returnTo || '/index.html');
-});
+// app.get('/polls', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '..', 'public', 'polls.html'));
+// });
+//
+// app.get('/login', (req, res) => {
+//     res.render('login', { env: env });
+// });
+//
+// app.get('/logout', (req, res) => {
+//   req.logout();
+//   res.redirect('/');
+// });
+//
+// app.get('/callback',
+//   passport.authenticate('auth0', { failureRedirect: '/404.html' }),
+//   (req, res) => {
+//     res.redirect(req.session.returnTo || '/index.html');
+// });
 
 app.use((req, res, next) => {
   var err = new Error('Not Found');
