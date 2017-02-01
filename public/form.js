@@ -22,7 +22,7 @@ $(document).ready(function() {
           text: $('#D').val()
         }
       ]
-    }
+    };
 
     fetch('/api/surveys', {
       headers: {
@@ -40,6 +40,5 @@ $(document).ready(function() {
     .catch((err) => {
       console.error(err)
     })
-    })
-
-  })
+  });
+})

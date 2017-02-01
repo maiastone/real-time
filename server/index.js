@@ -22,7 +22,7 @@ app.post('/api/surveys', function (req, res) {
   res.redirect(`/surveys/${id}`)
 });
 
-app.get('/surveys/:id', (req, res) => {
+app.get('/surveys', (req, res) => {
   res.sendFile(__dirname + '/public/form.html');
 })
 
