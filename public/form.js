@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
+
   $('.submit').click((e) => {
     e.preventDefault();
+
     const formData = {
       name: $('#name').val(),
       selections: [
@@ -35,7 +37,8 @@ $(document).ready(function() {
       })
     })
     .then((res) => {
-      return res.json();
+      console.log(res);
+      window.location = res.url
     })
     .catch((err) => {
       console.error(err)

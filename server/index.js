@@ -19,16 +19,10 @@ app.post('/api/surveys', function (req, res) {
   const id = md5(formData);
   const survey = { id, formData }
   app.locals.surveys.push(survey)
-  res.redirect(`/surveys/${id}`)
+  res.redirect(`/survey.html?surveyID=${id}`)
+  // res.send(id)
 });
 
-app.get('/surveys', (req, res) => {
-  res.sendFile(__dirname + '/public/form.html');
-})
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
-});
 
 app.use((req, res, next) => {
   var err = new Error('Not Found');
