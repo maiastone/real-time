@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
   var retrieveUser = function() {
     let id_token = localStorage.getItem('id_token');
     if (id_token) {
-      lock.getProfile (authResult.idToken, (error, profile) => {
+      lock.getProfile (id_token, (error, profile) => {
         if (error) {
           return alert ('error getting profile')
         }
@@ -42,7 +42,7 @@ window.addEventListener('load', function() {
   var showProfile = function(profile) {
     console.log(profile);
     $('.btn-login').hide();
-    $('.name').text(profile.nickname);
+    $('.name').text(profile.name);
     $('.avatar').attr('src', profile.picture).show();
   };
 
