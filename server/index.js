@@ -20,9 +20,15 @@ app.post('/api/surveys', function (req, res) {
   const survey = { id, formData }
   app.locals.surveys.push(survey)
   res.redirect(`/survey.html?surveyID=${id}`)
-  // res.send(id)
 });
 
+app.get('/api/survey/:surveyID', function (req, res) {
+  const id = req.params.surveyID;
+  let currentSurvey = app.locals.surveys.filter(id);
+  console.log(id, 'id');
+  console.log(currentSurvey, 'currentSurvey');
+  res.status(200).send(currentSurvey);
+})
 
 app.use((req, res, next) => {
   var err = new Error('Not Found');

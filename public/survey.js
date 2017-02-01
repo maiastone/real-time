@@ -1,6 +1,21 @@
 
 $(document).ready(function() {
 
+  const surveyID = getParameterByName('surveyID');
+  console.log(surveyID);
+  const getSurvey = (surveyID) => {
+    fetch(`/api/survey/${surveyID}`)
+    .then ((res) => {
+      return res.json();
+    })
+    .then((json) => {
+      console.log(json);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+  getSurvey(surveyID);
 
   function getParameterByName(name, url) {
      if (!url) {
@@ -14,7 +29,6 @@ $(document).ready(function() {
      return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
-  const surveyID = getParameterByName('surveyID');
-  
+
 
 })
