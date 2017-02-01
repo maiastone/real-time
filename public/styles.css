@@ -1,0 +1,42 @@
+body {
+  background-color: darkgray;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+  font-family: 'Faster One', cursive;
+  font-size: 50px;
+  margin: 10px;
+  padding: 0 40px;
+}
+
+h2 {
+  padding: 2%;
+}
+
+button {
+  width: 60px;
+  height: 30px;
+  background-color: white;
+  padding: -45px;
+  width: 100vw;
+  transition-duration: .5s;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+.user-display {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  font-size: 28px;
+  padding: 3%;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}
