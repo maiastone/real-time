@@ -1,14 +1,14 @@
-$(document).ready(function() {
+window.addEventListener('load', function() {
+
+  var AUTH0_CLIENT_ID = '7EfFcVXZ0NycSabHVlBnr43zfs4cSmnh';
+  var AUTH0_DOMAIN = 'maiastone.auth0.com';
+  var AUTH0_CALLBACK_URL = location.href;
 
 
-  const lock = new Auth0Lock('qHCAwXwsNocsS60Lq96fs7H6qTs3osQD', 'maiastone.auth0.com',
-      { auth:
-          {
-          redirectUrl: 'http://localhost:3000/',
-            params: {
-              scope: 'openid name picture'
-            }
-          }
+  var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
+    auth: {
+      params: { scope: 'openid email' }
+    }
   });
 
   $('#btn-login').click((e) => {
@@ -24,11 +24,10 @@ $(document).ready(function() {
       }
       localStorage.setItem('id_token', authResult.idToken);
       showProfile(profile);
-      debugger;
     });
   });
 
-  function retrieveUser() {
+  var retrieveUser = function() {
     let id_token = localStorage.getItem('id_token');
     if (id_token) {
       lock.getProfile (authResult.idToken, (error, profile) => {
@@ -40,11 +39,11 @@ $(document).ready(function() {
     }
   };
 
-  function showProfile (profile) {
+  var showProfile = function(profile) {
     console.log(profile);
     $('.btn-login').hide();
     $('.name').text(profile.nickname);
-    $('.gravatar').attr('src', profile.picture).show();
+    $('.avatar').attr('src', profile.picture).show();
   };
 
   retrieveUser();
