@@ -2,7 +2,6 @@ $(document).ready(function() {
 
   $('.submit').click((e) => {
     e.preventDefault();
-    console.log('form submitted!');
     const formData = {
       name: $('#name').val(),
       selections: [
@@ -24,6 +23,23 @@ $(document).ready(function() {
         }
       ]
     }
-      console.log(formData);
+
+    fetch('/api/surveys', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'post',
+      body: JSON.stringify({
+        survey: formData
+      })
     })
-})
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+    })
+
+  })

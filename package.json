@@ -6,7 +6,7 @@
   "author": "Maia Stone",
   "main": "scripts.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js",
     "dev-server": "NODE_ENV=development cross-env hjs-dev-server"
   },
   "devDependencies": {
@@ -17,6 +17,7 @@
     "connect-ensure-login": "^0.1.1",
     "express": "^4.14.1",
     "jquery": "^3.1.1",
+    "md5": "^2.2.1",
     "passport": "^0.3.2",
     "passport-auth0": "^0.6.0"
   }

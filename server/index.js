@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
+const md5 = require('md5');
 const path = require('path');
 const passport = require('passport');
 const environment = process.env.NODE_ENV || 'development';
@@ -9,6 +10,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
+app.set('port', process.env.PORT || 3000);
+
+app.locals.surveys = [];
+
+app.post('/api/surveys', function (req, res) {
+  const formData = req.body;
+  const id = md5(formData);
+  const survey = { id, formData }
+  app.locals.surveys.push(survey)
+  res.redirect(`/surveys/${id}`)
+});
+
+app.get('/surveys/:id', (req, res) => {
+  res.sendFile(__dirname + '/public/form.html');
+})
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
