@@ -49,6 +49,7 @@ $(document).ready(function() {
     $('.avatar').attr('src', profile.picture).show();
     $('.name').text(`Hi, ${profile.name}.`);
     $('#btn-logout').show();
+    $('.complete-survey').show();
   };
 
   retrieveUser();

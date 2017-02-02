@@ -57,14 +57,14 @@ function fetchSurvey(surveyID) {
         console.log('There is no survey')
       } else {
         $('.form').hide();
-        if (localStorage.getItem('id_token')) {
-          renderSurvey(data);
-        } else {
+        renderSurvey(data);
+        if (!localStorage.getItem('id_token')) {
+          $('.complete-survey').hide();
           $('#btn-login').show();
         }
       }
-    })
-  }
+  })
+}
 
 function appendSelection(className, value, buttonText, selectionText) {
   $(className).append(`<div class='selection-container'>
