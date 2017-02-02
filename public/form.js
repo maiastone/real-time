@@ -37,14 +37,6 @@ socket.on('statusMessage', (message) => {
   statusMessage.text(message);
 });
 
-// for (let i = 0; i < buttons.length; i++) {
-//   debugger;
-//   buttons[i].addEventListener('click', function(e) {
-//     e.preventDefault();
-//     socket.send('voteCast', this.innerText);
-//   });
-// }
-
 socket.on('voteCount', (votes) => {
   console.log(votes);
 });
@@ -66,7 +58,7 @@ function getParameterByName(name, url) {
         if (surveyID === null) {
           console.log('There is no survey')
         } else {
-          console.log(data.formData.survey);
+          $('.form').hide();
           let name = data.formData.survey.name;
           let selection1 = data.formData.survey.selections[0].text;
           let selection2 = data.formData.survey.selections[1].text;

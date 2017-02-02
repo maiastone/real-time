@@ -3,7 +3,6 @@ $(document).ready(function() {
 
   $('.submit').click(() => {
 
-
     const formData = {
       name: $('#name').val(),
       selections: [
