@@ -1,8 +1,8 @@
 
 $(document).ready(function() {
 
-  $('.submit').click((e) => {
-    e.preventDefault();
+  $('.submit').click(() => {
+
 
     const formData = {
       name: $('#name').val(),
