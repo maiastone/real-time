@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Faster+One|Raleway" rel="stylesheet">
     <script src="https://cdn.auth0.com/js/lock/10.8/lock.min.js"></script>
     <script src="https://cdn.auth0.com/w2/auth0-7.6.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="./create-survey.js"></script>
+    <script src="./scripts.js"></script>
+    <script src="./form.js"></script>
     <title>Real Time</title>
   </head>
   <body>
@@ -24,7 +28,7 @@
       <h2><span class="name"></span></h2>
     </section>
 
-    <main class="form slide">
+    <main class="form">
       <form method="post" action="index.html">
         <label class="form-name">Survey Name<input type="text" id="name"/></label>
         <label for "A" class="form-selection">A<input type="text" id="A"/></label>
@@ -35,9 +39,14 @@
       </form>
     </main>
 
-    <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+      <form>
+        <div class='question'></div>
+        <div class='selection-1'></div>
+        <div class='selection-2'></div>
+        <div class='selection-3'></div>
+        <div class='selection-4'></div>
+      </form>
 
-    <script src="./form.js"></script>
-    <script src="./scripts.js"></script>
+
   </body>
 </html>

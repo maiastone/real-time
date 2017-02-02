@@ -1,46 +1,34 @@
 $(document).ready(function() {
 
-  $('.submit').click((e) => {
-    e.preventDefault();
+  let surveyID = getParameterByName('surveyID');
+  console.log(surveyID);
+  getSurvey(surveyID);
+  renderSurvey(surveyID)
 
-    const formData = {
-      name: $('#name').val(),
-      selections: [
-        {
-          id: 1,
-          text: $('#A').val()
-        },
-        {
-          id: 2,
-          text: $('#B').val()
-        },
-        {
-          id: 3,
-          text: $('#C').val()
-        },
-        {
-          id: 4,
-          text: $('#D').val()
-        }
-      ]
-    };
+});
 
-    fetch('/api/surveys', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'post',
-      body: JSON.stringify({
-        survey: formData
-      })
-    })
-    .then((res) => {
-      console.log(res);
-      window.location = res.url
-    })
-    .catch((err) => {
-      console.error(err)
-    })
-  });
-})
+  function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+    function getSurvey(surveyID) {
+    $.get(`/api/survey/${surveyID}`, function(data) {
+      console.log(data);
+    });
+  }
+
+    function renderSurvey(surveyID) {
+      if (surveyID === null) {
+        console.log('There is no survey')
+      } else {
+      $('.question').append(`<h3>${surveyID}</h3>`)
+      }
+    }
