@@ -1,26 +1,31 @@
 body {
-  background-color: darkgray;
+  background-image: linear-gradient(#9dfbd3, #90e5d5, #70cfdd, #6dabdd, #7878c5);
   font-family: 'Raleway', sans-serif;
 }
 
 h1 {
   font-family: 'Faster One', cursive;
-  font-size: 50px;
-  margin: 10px;
-  padding: 0 40px;
+  font-size: 40px;
+  text-align: center;
+  margin: 10%;
 }
 
 h2 {
-  padding: 2%;
+  padding: 2% 0 2% 5%;
+}
+
+h3 {
+  margin: auto;
+  font-size: 1.5em;
+  padding: 5px 0;
 }
 
 button {
-  width: 60px;
-  height: 30px;
+  height: 25px;
   background-color: white;
-  padding: -45px;
-  width: 100vw;
+  width: 25%;
   transition-duration: .5s;
+  margin: 2% 10%;
 }
 
 button:hover {
@@ -29,8 +34,6 @@ button:hover {
 }
 
 .user-display {
-  width: 50%;
-  margin: auto;
   text-align: center;
   font-size: 28px;
   padding: 3%;
@@ -39,4 +42,38 @@ button:hover {
 img {
   height: 100px;
   width: 100px;
+}
+
+label {
+  display: block;
+  width: 75%;
+  margin: auto;
+  font-size: 1.5em;
+}
+
+input {
+  height: 30px;
+  margin: 2%;
+  font-size: 1.2em;
+}
+
+.form-selection {
+  display: flex;
+  align-items: center;
+}
+
+.selection-container {
+  display: flex;
+}
+
+.radio {
+  width: 25%;
+}
+
+.selection {
+  width: 75%;
+}
+
+.form-name {
+  font-size: 1.5em;
 }
