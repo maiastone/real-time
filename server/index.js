@@ -20,20 +20,16 @@ app.locals.surveys = [];
 app.post('/api/survey', function (req, res) {
   const formData = req.body;
   const id = md5(formData);
-  const survey = { id, formData }
-  app.locals.surveys.push(survey)
-  res.send(survey)
+  const currentSurvey = { id, formData }
+  app.locals.surveys.push(currentSurvey)
+  res.status(200).json(currentSurvey)
 });
 
 app.get('/api/survey/:surveyID', function (req, res) {
-  console.log(res);
-  // const id = req.params.surveyID;
-  // let currentSurvey = app.locals.surveys.find((survey) => {
-  //   return survey.surveyID === id
-  // })
-  // console.log(currentSurvey);
-  // res.json(currentSurvey)
-})
+  const id = req.params.surveyID;
+  let currentSurvey = app.locals.surveys[0]
+  res.status(200).json(currentSurvey)
+});
 
 app.use((req, res, next) => {
   var err = new Error('Not Found');

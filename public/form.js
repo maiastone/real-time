@@ -1,11 +1,20 @@
 $(document).ready(function() {
 
   let surveyID = getParameterByName('surveyID');
-  console.log(surveyID);
-  getSurvey(surveyID);
-  renderSurvey(surveyID)
+
+  fetchSurvey(surveyID);
+  renderSurvey(surveyID);
 
 });
+
+  function fetchSurvey(surveyID) {
+    $.get(`/api/survey/${surveyID}`, function(data) {
+      console.log(data.formData.survey.name);
+      let name = data.formData.survey.name;
+      $('.selection-1').append(`<h3>${name}</h3>`)
+    })
+
+  }
 
   function getParameterByName(name, url) {
     if (!url) {
@@ -19,16 +28,11 @@ $(document).ready(function() {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
-    function getSurvey(surveyID) {
-    $.get(`/api/survey/${surveyID}`, function(data) {
-      console.log(data);
-    });
-  }
-
-    function renderSurvey(surveyID) {
-      if (surveyID === null) {
-        console.log('There is no survey')
-      } else {
-      $('.question').append(`<h3>${surveyID}</h3>`)
-      }
+  function renderSurvey(surveyID) {
+    if (surveyID === null) {
+      console.log('There is no survey')
+    } else {
+    $('.question').append(`<h3>${surveyID}</h3>`)
+    $('.selection-1').append(`<h3>${name}</h3>`)
     }
+  }
