@@ -47,7 +47,7 @@ $(document).ready(function() {
   var showProfile = function(profile) {
     $('#btn-login').hide();
     $('.avatar').attr('src', profile.picture).show();
-    $('.name').text(`Hi, ${profile.name}. Choose One Below.`);
+    $('.name').text(`Hi, ${profile.name}.`);
     $('#btn-logout').show();
   };
 
