@@ -7,12 +7,58 @@ const path = require('path');
 const passport = require('passport');
 const environment = process.env.NODE_ENV || 'development';
 
+const socketIo = require('socket.io');
+const port =  process.env.PORT || 3000;
+
+const server = http.createServer(app)
+   .listen(port, () => {
+      console.log(`Listening on port ${port}.`);
+    });
+
+const io = socketIo(server);
+const votes = {};
+
+io.on('connection', function (socket) {
+
+  io.sockets.emit('usersConnected', io.engine.clientsCount);
+
+  socket.emit('statusMessage', 'You have connected.');
+
+  socket.on('message', (channel, message) => {
+    if (channel === 'voteCast') {
+      votes[socket.id] = message;
+      socket.emit('voteCount', countVotes(votes));
+    }
+  });
+
+  socket.emit('voteCount', countVotes(votes));
+  io.sockets.emit('usersConnected', io.engine.clientsCount);
+
+  socket.on('disconnect', () => {
+  console.log('A user has disconnected.', io.engine.clientsCount);
+  delete votes[socket.id];
+  });
+});
+
+const countVotes = (votes) => {
+  const voteCount = {
+      A: 0,
+      B: 0,
+      C: 0,
+      D: 0
+  };
+
+  for (let vote in votes) {
+    voteCount[votes[vote]]++
+  }
+
+  return voteCount;
+}
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
-
-app.set('port', process.env.PORT || 3000);
 
 app.locals.surveys = [];
 
@@ -41,9 +87,6 @@ app.use((err, req, res, next) => {
   res.send(err);
 });
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log('listening');
-});
 
 app.use(passport.initialize());
 app.use(passport.session());

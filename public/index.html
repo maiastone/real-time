@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Faster+One|Raleway" rel="stylesheet">
     <script src="https://cdn.auth0.com/js/lock/10.8/lock.min.js"></script>
     <script src="https://cdn.auth0.com/w2/auth0-7.6.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="./create-survey.js"></script>
     <script src="./scripts.js"></script>
@@ -28,6 +29,9 @@
       <h2><span class="name"></span></h2>
     </section>
 
+    <div id="connection-count"></div>
+    <div id="status-message"></div>
+
     <main class="form">
       <form method="post" action="index.html">
         <label class="form-name">Survey Question<input type="text" id="name"/></label>
@@ -46,6 +50,7 @@
         <div class='selection-3'></div>
         <div class='selection-4'></div>
       </form>
+
 
 
   </body>
