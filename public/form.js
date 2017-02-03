@@ -12,19 +12,12 @@ $(document).ready(function() {
   })
 });
 
-// send profile with vote submit over the wire
-// array of arrays for each quesitons
-
 socket.on('connect', function () {
   console.log('You have connected!');
   socket.send('message', {
     username: 'yournamehere',
     text: 'I did the thing.'
   });
-});
-
-socket.on('message', function (message) {
-  console.log('Something came along on the "message" channel:', message);
 });
 
 socket.on('usersConnected', (count) => {
@@ -37,7 +30,18 @@ socket.on('statusMessage', (message) => {
 
 socket.on('voteCount', (votes) => {
   console.log(votes);
+  getUserPicture(votes)
 });
+
+function getUserPicture(votes) {
+  votes.forEach((userArray, index) => {
+    userArray.forEach((user) => {
+      $(`.selection-${index+1}`).prepend(
+        `<img src=${user.picture}/>`
+      );
+    })
+  })
+}
 
 function getParameterByName(name, url) {
   if (!url) {
@@ -69,7 +73,6 @@ function fetchSurvey(surveyID) {
 function appendSelection(className, value, buttonText, selectionText) {
   $(className).append(`<div class='selection-container'>
     <button
-      name='answer'
       class='select'
       value=${value}>${buttonText}
     </button>

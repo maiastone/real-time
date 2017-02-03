@@ -57,20 +57,6 @@ io.on('connection', function (socket) {
   });
 });
 
-const countVotes = (votes) => {
-  const voteCount = [
-      [],
-      [],
-      [],
-      [],
-  ];
-
-  for (let vote in votes) {
-    voteCount[votes[vote]]++
-  }
-
-  return voteCount;
-}
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
