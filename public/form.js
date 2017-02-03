@@ -6,6 +6,7 @@ const buttons = document.querySelectorAll('.select buttons');
 $(document).ready(function() {
   let surveyID = getParameterByName('surveyID');
   fetchSurvey(surveyID);
+
   $('.complete-survey').on('click', 'button', function(e) {
     e.preventDefault();
     socket.send('voteCast', this.value, profileData);
