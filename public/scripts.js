@@ -27,6 +27,7 @@ $(document).ready(function() {
         return;
       }
       localStorage.setItem('id_token', authResult.idToken);
+
       showProfile(profile);
     });
   });
@@ -39,6 +40,7 @@ $(document).ready(function() {
           return alert ('error getting profile')
         }
         showProfile(profile);
+        profileData = profile;
       });
     }
   };
@@ -46,14 +48,17 @@ $(document).ready(function() {
   var showProfile = function(profile) {
     $('#btn-login').hide();
     $('.avatar').attr('src', profile.picture).show();
-    $('.name').text(`Hi, ${profile.name}. Create your survey below.`);
+    $('.name').text(`Hi, ${profile.name}.`);
     $('#btn-logout').show();
+    $('.complete-survey').show();
   };
 
   retrieveUser();
 
   var logout = function() {
     localStorage.removeItem('id_token');
+    $('.survey-page').hide();
+    socket.emit('logout', profileData)
     window.location.href = '/';
   }
 

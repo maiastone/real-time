@@ -7,12 +7,61 @@ const path = require('path');
 const passport = require('passport');
 const environment = process.env.NODE_ENV || 'development';
 
+const socketIo = require('socket.io');
+const port =  process.env.PORT || 3000;
+
+const server = http.createServer(app)
+   .listen(port, () => {
+      console.log(`Listening on port ${port}.`);
+    });
+
+const io = socketIo(server);
+app.locals.votes = [
+    [],
+    [],
+    [],
+    [],
+];
+
+io.on('connection', function (socket) {
+
+  io.sockets.emit('usersConnected', io.engine.clientsCount);
+
+  socket.emit('statusMessage', 'You have connected.');
+
+  socket.on('message', (channel, index, user) => {
+    if (channel === 'voteCast') {
+      assignUser(user, index-1)
+      socket.emit('voteCount', app.locals.votes);
+    }
+  });
+
+  function assignUser(newUser, index) {
+    let votes = app.locals.votes;
+    votes = votes.map(function(selection) {
+      return selection.filter(function(user) {
+        return newUser.user_id != user.user_id
+      })
+    })
+    votes[index].push(newUser)
+    app.locals.votes = votes;
+  }
+
+  socket.emit('voteCount', app.locals.votes);
+
+  io.sockets.emit('usersConnected', io.engine.clientsCount);
+
+  socket.on('disconnect', () => {
+  console.log('A user has disconnected.', io.engine.clientsCount);
+
+  });
+});
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
-
-app.set('port', process.env.PORT || 3000);
 
 app.locals.surveys = [];
 
@@ -41,9 +90,6 @@ app.use((err, req, res, next) => {
   res.send(err);
 });
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log('listening');
-});
 
 app.use(passport.initialize());
 app.use(passport.session());
