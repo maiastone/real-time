@@ -1,5 +1,15 @@
+html {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background: #70bg32;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  background-image: linear-gradient(#9dfbd3, #90e5d5, #70cfdd, #6dabdd, #7878c5);
+}
+
 body {
-   background-image: radial-gradient(circle at 45px 175px, 	#f0ffaa, #def4a1, #d0eca3, #c5e3a5, #b9dbc0);
   font-family: 'Raleway', sans-serif;
 }
 
@@ -11,21 +21,26 @@ h1 {
 }
 
 h2 {
-  padding: 2% 0 2% 5%;
+  padding: 3%;
 }
 
 h3 {
-  margin: auto;
   font-size: 1.5em;
-  padding: 5px 0;
+}
+
+form {
+  text-align: center;
+}
+
+header {
+  padding: 3%;
 }
 
 button {
   height: 25px;
   background-color: white;
-  width: 25%;
   transition-duration: .5s;
-  margin: 2% 10%;
+  margin: 25px;
 }
 
 button:hover {
@@ -33,15 +48,11 @@ button:hover {
   color: white;
 }
 
-.user-display {
-  text-align: center;
-  font-size: 28px;
-  padding: 3%;
-}
-
 img {
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 label {
@@ -57,6 +68,15 @@ input {
   font-size: 1.2em;
 }
 
+.avatar {
+  height: 100px;
+  width: 100px;
+}
+
+.form-name {
+  font-size: 1.5em;
+}
+
 .form-selection {
   display: flex;
   align-items: center;
@@ -64,16 +84,32 @@ input {
 
 .selection-container {
   display: flex;
+  align-items: baseline;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.selection-1, .selection-2, .selection-3, .selection-4 {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
 }
 
 .submit {
   width: 25%;
 }
 
-.selection {
-  width: 75%;
+.survey-page {
+  text-align: center;
 }
 
-.form-name {
-  font-size: 1.5em;
+.user-display {
+  font-size: 28px;
+  display: flex;
+  justify-content: flex-start;;
+}
+
+#btn-login {
+  width: 300px;
+  height: 50px;
 }

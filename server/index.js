@@ -11,11 +11,12 @@ const socketIo = require('socket.io');
 const port =  process.env.PORT || 3000;
 
 const server = http.createServer(app)
-   .listen(port, () => {
-      console.log(`Listening on port ${port}.`);
-    });
+  .listen(port, () => {
+    console.log(`Listening on port ${port}.`);
+  });
 
 const io = socketIo(server);
+
 app.locals.votes = [
     [],
     [],
@@ -31,7 +32,7 @@ io.on('connection', function (socket) {
 
   socket.on('message', (channel, index, user) => {
     if (channel === 'voteCast') {
-      assignUser(user, index-1)
+      assignUser(user, index-1);
       socket.emit('voteCount', app.locals.votes);
     }
   });
@@ -53,7 +54,6 @@ io.on('connection', function (socket) {
 
   socket.on('disconnect', () => {
   console.log('A user has disconnected.', io.engine.clientsCount);
-
   });
 });
 
@@ -61,6 +61,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
+
 
 app.locals.surveys = [];
 

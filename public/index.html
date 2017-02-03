@@ -20,17 +20,16 @@
 
     <header>
       <h1>Real Time Response</h1>
+      <section class="user-display">
+        <img alt="avatar" class="avatar" style="display:none;">
+        <h2><span class="name"></span></h2>
+      </section>
       <button type="submit" id="btn-logout" style="display:none;">Sign Out</button>
-    </header>
-
-    <section class="user-display">
-      <img alt="avatar" class="avatar" style="display:none;">
-      <h2><span class="name"></span></h2>
-    </section>
+  </header>
 
     <main class="form">
       <form method="post" action="index.html">
-        <label class="form-name">Survey Question<input type="text" id="name"/></label>
+        <label class="form-name">Survey Question<input type="textarea" id="name"/></label>
         <label for "A" class="form-selection">A<input type="text" id="A"/></label>
         <label for "B" class="form-selection">B<input type="text" id="B"/></label>
         <label for "C" class="form-selection">C<input type="text" id="C"/></label>
@@ -39,16 +38,19 @@
       </form>
     </main>
 
-      <div class='survey-page'>
+    <div class='survey-page'>
 
-        <button type="submit" id="btn-login" style="display:none;">Sign In</button>
-      <form class='complete-survey'>
-        <div class='question'></div>
-        <div class='selection-1'></div>
-        <div class='selection-2'></div>
-        <div class='selection-3'></div>
-        <div class='selection-4'></div>
-      </form>
+    <button type="submit" id="btn-login" style="display:none;">
+      Please Login with Github To Respond To A Survey
+    </button>
+    <form class='complete-survey'>
+      <div class='question'></div>
+      <div class='selection-1'></div>
+      <div class='selection-2'></div>
+      <div class='selection-3'></div>
+      <div class='selection-4'></div>
+    </form>
+
     </div>
 
   </body>
