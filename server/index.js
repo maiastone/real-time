@@ -16,7 +16,12 @@ const server = http.createServer(app)
     });
 
 const io = socketIo(server);
-const votes = {};
+app.locals.votes = [
+    [],
+    [],
+    [],
+    [],
+];
 
 io.on('connection', function (socket) {
 
@@ -24,29 +29,41 @@ io.on('connection', function (socket) {
 
   socket.emit('statusMessage', 'You have connected.');
 
-  socket.on('message', (channel, message) => {
+  socket.on('message', (channel, index, user) => {
     if (channel === 'voteCast') {
-      votes[socket.id] = message;
-      socket.emit('voteCount', countVotes(votes));
+      assignUser(user, index-1)
+      socket.emit('voteCount', app.locals.votes);
     }
   });
 
-  socket.emit('voteCount', countVotes(votes));
+  function assignUser(newUser, index) {
+    let votes = app.locals.votes;
+    votes = votes.map(function(selection) {
+      return selection.filter(function(user) {
+        return newUser.user_id != user.user_id
+      })
+    })
+    votes[index].push(newUser)
+    app.locals.votes = votes;
+  }
+
+  socket.emit('voteCount', app.locals.votes);
+
   io.sockets.emit('usersConnected', io.engine.clientsCount);
 
   socket.on('disconnect', () => {
   console.log('A user has disconnected.', io.engine.clientsCount);
-  delete votes[socket.id];
+
   });
 });
 
 const countVotes = (votes) => {
-  const voteCount = {
-      A: 0,
-      B: 0,
-      C: 0,
-      D: 0
-  };
+  const voteCount = [
+      [],
+      [],
+      [],
+      [],
+  ];
 
   for (let vote in votes) {
     voteCount[votes[vote]]++

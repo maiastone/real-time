@@ -8,7 +8,7 @@ $(document).ready(function() {
   fetchSurvey(surveyID);
   $('.complete-survey').on('click', 'button', function(e) {
     e.preventDefault();
-    socket.send('voteCast', this.innerText);
+    socket.send('voteCast', this.value, profileData);
   })
 });
 
@@ -83,8 +83,8 @@ function renderSurvey(data) {
   let selection3 = data.formData.survey.selections[2].text;
   let selection4 = data.formData.survey.selections[3].text;
   $('.question').append(`<h2 class='form-name'>${name}</h2>`)
-  appendSelection('.selection-1', 'selection1', 'A', selection1)
-  appendSelection('.selection-2', 'selection2', 'B', selection2)
-  appendSelection('.selection-3', 'selection3', 'C', selection3)
-  appendSelection('.selection-4', 'selection4', 'D', selection4)
+  appendSelection('.selection-1', 1, 'A', selection1)
+  appendSelection('.selection-2', 2, 'B', selection2)
+  appendSelection('.selection-3', 3, 'C', selection3)
+  appendSelection('.selection-4', 4, 'D', selection4)
 };

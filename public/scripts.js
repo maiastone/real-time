@@ -27,6 +27,7 @@ $(document).ready(function() {
         return;
       }
       localStorage.setItem('id_token', authResult.idToken);
+
       showProfile(profile);
     });
   });
