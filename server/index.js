@@ -57,7 +57,6 @@ io.on('connection', function (socket) {
   });
 });
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

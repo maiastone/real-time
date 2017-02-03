@@ -7,19 +7,24 @@
   "main": "scripts.js",
   "scripts": {
     "start": "nodemon server/index.js",
-    "dev-server": "NODE_ENV=development cross-env hjs-dev-server"
+    "dev-server": "NODE_ENV=development cross-env hjs-dev-server",
+    "test": "mocha"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "socket.io": "^1.7.2",
     "body-parser": "^1.16.0",
     "connect-ensure-login": "^0.1.1",
     "express": "^4.14.1",
     "jquery": "^3.1.1",
     "md5": "^2.2.1",
+    "mocha": "^3.2.0",
     "passport": "^0.3.2",
-    "passport-auth0": "^0.6.0"
+    "passport-auth0": "^0.6.0",
+    "socket.io": "^1.7.2"
   }
 }
